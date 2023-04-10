@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BD {
-	
+	///prueba 
 	private static List<RegistrarEmpresa> lista = new ArrayList<>();
 	private static Integer con=1; 
 	static {
