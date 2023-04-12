@@ -1,33 +1,28 @@
-package com.alura.gerenciador.servlet;
+package com.alura.gerenciador.Accion;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.alura.gerenciador.Modelo.BD;
 import com.alura.gerenciador.Modelo.RegistrarEmpresa;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class NuevaEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class NuevaEmpresa {
 
-
-	// se cambia el service del metodo a doPost para solo recibir del post y no por
-	// medio de la url visible
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		RegistrarEmpresa empresa = new RegistrarEmpresa();
 		BD db = new BD();
-
-		// con el getParameter se obtiene lo que pongamos en la pag despues del singo de
+		// con el getParameter se obtiene lo que pongamos en la pag despues del signo de
 		// " ? "
-
 		String NuevaEmpresa = request.getParameter("Nombre");
 		String FechaEmpresa = request.getParameter("fecha");
 		String[] fechaseparada = FechaEmpresa.split("-");
@@ -39,8 +34,6 @@ public class NuevaEmpresaServlet extends HttpServlet {
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
-
-
 		empresa.setNombre(NuevaEmpresa);
 		empresa.setFecha(fecha);
 		db.agregar(empresa);
@@ -49,12 +42,10 @@ public class NuevaEmpresaServlet extends HttpServlet {
 //		momento de quiera actualizar la sig pag
 //		redirecciona a la sig ventana sin datos (o al menos eso entendi)
 		
-		response.sendRedirect("ListarEmpresa");
+		response.sendRedirect("entrada?accion=ListarEmpresa");
 
 //		RequestDispatcher rd = request.getRequestDispatcher("/ListarEmpresa");
 //		request.setAttribute("nombre", empresa.getNombre());
 //		rd.forward(request, response);
-
 	}
-
 }

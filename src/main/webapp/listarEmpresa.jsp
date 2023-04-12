@@ -1,4 +1,4 @@
-<%@ page import="com.alura.gerenciador.servlet.RegistrarEmpresa"%>
+<%@ page import="com.alura.gerenciador.Modelo.RegistrarEmpresa"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -87,10 +87,10 @@ h1 {
 						pattern="dd/MM/YYYY" /></td>
 
 				<td style="border: none;"><a
-					href="/gerenciador/modificarEmpresa?id=${empresa.id}"><button>Modificar</button></a></td>
+					href="/gerenciador/entrada?accion=modificarEmpresa&id=${empresa.id}"><button>Modificar</button></a></td>
 
 				<td style="border: none;"><a
-					href="/gerenciador/eliminarEmpresa?id=${empresa.id}"><button>Eliminar</button></a></td>
+					href="/gerenciador/entrada?accion=eliminarEmpresa&id=${empresa.id}"><button>Eliminar</button></a></td>
 
 
 			</tr>

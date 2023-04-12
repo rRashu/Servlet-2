@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<c:url value="guardarModificado" var="linkServeletNuevaEmpresa" />
+<c:url value="entrada?accion=GuardarEmpresa" var="linkServeletNuevaEmpresa" />
 
 	<form action="${linkServeletNuevaEmpresa}" method="post">
 	 	    <input type="hidden" name="Id" value="${empresa.id}" />

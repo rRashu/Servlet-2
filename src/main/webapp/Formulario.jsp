@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<c:url value="NuevaEmpresa" var="linkServeletNuevaEmpresa" />
+<c:url value="entrada?accion=NuevaEmpresa" var="linkServeletNuevaEmpresa" />
 
 	<form action="${linkServeletNuevaEmpresa}" method="post">
 		Nombre De la Empresa: <input type="text" name="Nombre" /> <br>
