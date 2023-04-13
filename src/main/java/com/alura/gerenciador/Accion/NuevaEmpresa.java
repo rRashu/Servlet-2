@@ -4,19 +4,17 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import com.alura.gerenciador.Modelo.BD;
 import com.alura.gerenciador.Modelo.RegistrarEmpresa;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class NuevaEmpresa {
+public class NuevaEmpresa implements Accion{
 
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		RegistrarEmpresa empresa = new RegistrarEmpresa();
@@ -42,10 +40,11 @@ public class NuevaEmpresa {
 //		momento de quiera actualizar la sig pag
 //		redirecciona a la sig ventana sin datos (o al menos eso entendi)
 		
-		response.sendRedirect("entrada?accion=ListarEmpresa");
+	
 
 //		RequestDispatcher rd = request.getRequestDispatcher("/ListarEmpresa");
 //		request.setAttribute("nombre", empresa.getNombre());
 //		rd.forward(request, response);
+		return "sendRedirect:entrada?accion=ListarEmpresa";
 	}
 }

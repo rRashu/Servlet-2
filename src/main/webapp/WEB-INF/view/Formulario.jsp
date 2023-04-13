@@ -15,6 +15,5 @@
 		Fecha de Creacion: <input type="date" name="fecha" /> <input
 			type="submit" />
 	</form>
-
 </body>
 </html>

@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-//sirve para ocultar el formato de la pag
+//sirve para ocultar el formato de la pag y como se va a encontrar en el navegador
 
 @WebServlet(urlPatterns ="/hola")
 public class HolaMundoServlet extends HttpServlet{

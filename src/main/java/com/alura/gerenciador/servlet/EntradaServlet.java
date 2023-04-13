@@ -2,12 +2,9 @@ package com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
-import com.alura.gerenciador.Accion.ListarEmpresa;
-import com.alura.gerenciador.Accion.NuevaEmpresa;
-import com.alura.gerenciador.Accion.eliminarEmpresa;
-import com.alura.gerenciador.Accion.guardarModificado;
-import com.alura.gerenciador.Accion.modificarEmpresa;
+import com.alura.gerenciador.Accion.Accion;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,33 +19,47 @@ public class EntradaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String ac = request.getParameter("accion");
 
-		if (ac.equals("ListarEmpresa")) {
-			ListarEmpresa le = new ListarEmpresa();
-			le.ejecutar(request, response);
-		} else {
-			if (ac.equals("GuardarEmpresa")) {
-				System.out.println("Mostrar Empresa");
-				guardarModificado gm = new guardarModificado();
-				gm.ejecutar(request, response);
-			} else {
-				if (ac.equals("eliminarEmpresa")) {
-					System.out.println("Eliminar empresa");
-					eliminarEmpresa ee = new eliminarEmpresa();
-					ee.ejecutar(request, response);
-				} else {
-					if (ac.equals("NuevaEmpresa")) {
-						System.out.println("Nueva empresa");
-						NuevaEmpresa ne = new NuevaEmpresa();
-						ne.ejecutar(request, response);
-					} else {
-						if (ac.equals("modificarEmpresa")) {
-							System.out.println("modificar empresa");
-							modificarEmpresa me = new modificarEmpresa();
-							me.ejecutar(request, response);
-						}
-					}
-				}
-			}
+		String nombreClase = "com.alura.gerenciador.Accion." + ac;
+
+		String entrada = null;
+		
+		try {
+			Class clase = Class.forName(nombreClase);			
+			
+			Accion accion = (Accion) clase.newInstance();
+			
+			entrada = accion.ejecutar(request, response);
+		} catch (InstantiationException | IllegalAccessException e) {
+			
+			throw new ServletException(e);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		String[] separado = entrada.split(":");
+
+		if (separado[0].equals("RequestDispatcher")) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + separado[1]);
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect(separado[1]);
+		}
+
+		/*
+		 * if (ac.equals("ListarEmpresa")) { ListarEmpresa le = new ListarEmpresa();
+		 * entrada = le.ejecutar(request, response); } else { if
+		 * (ac.equals("GuardarEmpresa")) { System.out.println("Mostrar Empresa");
+		 * guardarModificado gm = new guardarModificado(); entrada =
+		 * gm.ejecutar(request, response); } else { if (ac.equals("eliminarEmpresa")) {
+		 * System.out.println("Eliminar empresa"); eliminarEmpresa ee = new
+		 * eliminarEmpresa(); entrada = ee.ejecutar(request, response); } else { if
+		 * (ac.equals("NuevaEmpresa")) { System.out.println("Nueva empresa");
+		 * NuevaEmpresa ne = new NuevaEmpresa(); entrada = ne.ejecutar(request,
+		 * response); } else { if (ac.equals("modificarEmpresa")) {
+		 * System.out.println("modificar empresa"); modificarEmpresa me = new
+		 * modificarEmpresa(); entrada = me.ejecutar(request, response); } } } } }
+		 */
+
 	}
 }

@@ -6,20 +6,17 @@ import java.util.List;
 import com.alura.gerenciador.Modelo.BD;
 import com.alura.gerenciador.Modelo.RegistrarEmpresa;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class ListarEmpresa {
+public class ListarEmpresa implements Accion{
 
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("prueba");
 		List<RegistrarEmpresa> lista = new BD().mostrar();
-		RequestDispatcher rd = request.getRequestDispatcher("/listarEmpresa.jsp");
 		request.setAttribute("empresas", lista);
-		rd.forward(request, response);
-
+		return "RequestDispatcher:listarEmpresa.jsp";
 	}
 }
