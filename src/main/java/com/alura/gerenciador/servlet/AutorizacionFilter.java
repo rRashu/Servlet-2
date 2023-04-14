@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/entrada")
+//@WebFilter(urlPatterns = "/entrada")
 public class AutorizacionFilter extends HttpFilter implements Filter {
 
 	public void doFilter(ServletRequest servletrequest, ServletResponse servletresponse, FilterChain chain)
