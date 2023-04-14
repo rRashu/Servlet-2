@@ -65,8 +65,9 @@ h1 {
 	<c:if test="${not empty nombre}">
 	 Empresa ${nombre} Registrada!
 	</c:if>
-Usuario Login: ${loginUsuario.login}
-
+	<c:import url="LogoutParcial.jsp"></c:import>
+	<br>
+	<br>
 	<h1>Listado de las empresas</h1>
 
 

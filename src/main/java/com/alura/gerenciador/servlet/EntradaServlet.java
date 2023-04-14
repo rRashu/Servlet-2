@@ -21,19 +21,15 @@ public class EntradaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String ac = request.getParameter("accion");
-		HttpSession sesion = request.getSession();
-		Boolean esUsusarioNoLogeado = (sesion.getAttribute("loginUsuario")==null);
-		Boolean Protegido = !(ac.equals("Login") || ac.equals("FormularioLogin"));
-
-		if (esUsusarioNoLogeado && Protegido) {
-			response.sendRedirect("entrada?accion=FormularioLogin");
-			return;
-		}
-		
-		
-		
-		
-		
+//		HttpSession sesion = request.getSession();
+//		Boolean esUsusarioNoLogeado = (sesion.getAttribute("loginUsuario")==null);
+//		Boolean Protegido = !(ac.equals("Login") || ac.equals("FormularioLogin"));
+//
+//		if (esUsusarioNoLogeado && Protegido) {
+//			response.sendRedirect("entrada?accion=FormularioLogin");
+//			return;
+//		}
+			
 		
 		String nombreClase = "com.alura.gerenciador.Accion." + ac;
 

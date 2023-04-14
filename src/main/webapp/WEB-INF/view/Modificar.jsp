@@ -7,7 +7,7 @@
 <title>Ingreso de Empresa</title>
 </head>
 <body>
-
+<c:import url="LogoutParcial.jsp"></c:import>
 <c:url value="entrada?accion=GuardarModificado" var="linkServeletNuevaEmpresa" />
 
 	<form action="${linkServeletNuevaEmpresa}" method="post">

@@ -7,7 +7,10 @@
 <title>Ingreso de Empresa</title>
 </head>
 <body>
-
+	<c:import url="LogoutParcial.jsp"></c:import>
+	<br>
+	<br>
+	<br>
 	<c:url value="/entrada?accion=NuevaEmpresa"
 		var="linkServeletNuevaEmpresa" />
 
