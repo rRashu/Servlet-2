@@ -65,7 +65,7 @@ h1 {
 	<c:if test="${not empty nombre}">
 	 Empresa ${nombre} Registrada!
 	</c:if>
-
+Usuario Login: ${loginUsuario.login}
 
 	<h1>Listado de las empresas</h1>
 
