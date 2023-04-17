@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 //@WebFilter(urlPatterns = "/entrada")
 public class ControladorFilter extends HttpFilter implements Filter {
+	private static final long serialVersionUID = 1L;
 
 	public void doFilter(ServletRequest servletrequest, ServletResponse servletresponse, FilterChain chain)
 			throws IOException, ServletException {
@@ -31,8 +32,10 @@ public class ControladorFilter extends HttpFilter implements Filter {
 		String entrada = null;
 
 		try {
+			@SuppressWarnings("rawtypes")
 			Class clase = Class.forName(nombreClase);
 
+			@SuppressWarnings("deprecation")
 			Accion accion = (Accion) clase.newInstance();
 
 			entrada = accion.ejecutar(request, response);
@@ -40,7 +43,6 @@ public class ControladorFilter extends HttpFilter implements Filter {
 
 			throw new ServletException(e);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
